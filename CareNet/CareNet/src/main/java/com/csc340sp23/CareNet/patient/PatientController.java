@@ -15,25 +15,25 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
-    @GetMapping("/patientLogin")
+    @GetMapping("/patientLoginPage")
     public String patientLogin(Model model) {
         model.addAttribute("patientInfo", new PatientInfo());
-        return "patientLogin";
+        return "patientLoginPage";
     }
 
-    @PostMapping("/patientLogin")
+    @PostMapping("/patientLoginPage")
     public String processLoginForm(@ModelAttribute("patientInfo") PatientInfo patientInfo) {
         boolean authenticated = patientService.authenticate(patientInfo.getUser(), patientInfo.getPass());
-        if (authenticated) {
-            return "redirect:/dashboard";
+        if (authenticated && patientInfo.getUserType().equals("patient")) {
+            return "redirect:/patientDashboard";
         } else {
-            return "redirect:/patientLogin?error";
+            return "redirect:/patientLoginPage?error";
         }
     }
 
-    @GetMapping("/patientLogin/dashboard")
+    @GetMapping("/patientDashboard")
     public String showDashboardPage() {
-        return "/patientLogin/dashboard";
+        return "patientDashboard";
     }
 
 }

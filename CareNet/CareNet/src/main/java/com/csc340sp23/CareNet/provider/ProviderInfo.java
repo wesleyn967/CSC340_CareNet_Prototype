@@ -28,10 +28,12 @@ public class ProviderInfo {
     private long id;
     private String user;
     private String pass;
+    private String userType;
 
-    public ProviderInfo(String user, String pass) {
+    public ProviderInfo(String user, String pass, String userType) {
         this.user = user;
         this.pass = pass;
+        this.userType = userType;
     }
 
 }

@@ -11,8 +11,7 @@ public class AdminService {
     private static final Map<String, String> ADMIN_CREDENTIALS = new HashMap<>();
 
     static {
-        ADMIN_CREDENTIALS.put("alice", "password123");
-        ADMIN_CREDENTIALS.put("bob", "letmein");
+        ADMIN_CREDENTIALS.put("admin", "admin");
     }
 
     public boolean authenticate(String username, String password) {

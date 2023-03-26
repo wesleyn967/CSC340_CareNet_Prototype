@@ -27,10 +27,12 @@ public class AdminInfo {
     private long id;
     private String user;
     private String pass;
+    private String userType;
 
-    public AdminInfo(String user, String pass) {
+    public AdminInfo(String user, String pass, String userType) {
         this.user = user;
         this.pass = pass;
+        this.userType = userType;
     }
 
 }

@@ -12,8 +12,7 @@ public class ProviderService {
     private static final Map<String, String> PROVIDER_CREDENTIALS = new HashMap<>();
 
     static {
-        PROVIDER_CREDENTIALS.put("alice", "password123");
-        PROVIDER_CREDENTIALS.put("bob", "letmein");
+        PROVIDER_CREDENTIALS.put("provider", "provider");
     }
 
     public boolean authenticate(String username, String password) {

@@ -16,25 +16,25 @@ public class ProviderController {
     @Autowired
     private ProviderService providerService;
 
-    @GetMapping("/providerLogin")
+    @GetMapping("/providerLoginPage")
     public String providerLogin(Model model) {
         model.addAttribute("providerInfo", new ProviderInfo());
-        return "providerLogin";
+        return "providerLoginPage";
     }
 
-    @PostMapping("/providerLogin")
+    @PostMapping("/providerLoginPage")
     public String processLoginForm(@ModelAttribute("providerInfo") ProviderInfo providerInfo) {
         boolean authenticated = providerService.authenticate(providerInfo.getUser(), providerInfo.getPass());
-        if (authenticated) {
-            return "redirect:/dashboard";
+        if (authenticated && providerInfo.getUserType().equals("provider")) {
+            return "redirect:/providerDashboard";
         } else {
-            return "redirect:/providerLogin?error";
+            return "redirect:/providerLoginPage?error";
         }
     }
 
-    @GetMapping("/providerLogin/dashboard")
+    @GetMapping("/providerDashboard")
     public String showDashboardPage() {
-        return "/providerLogin/dashboard";
+        return "providerDashboard";
     }
 
 }
