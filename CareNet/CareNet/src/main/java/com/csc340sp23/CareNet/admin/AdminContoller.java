@@ -24,14 +24,14 @@ public class AdminContoller implements ErrorController{
 
     @PostMapping("/adminLoginPage")
     public String processLoginForm(@ModelAttribute("adminInfo") AdminInfo adminInfo) {
-        boolean authenticated = adminService.authenticate(adminInfo.getUser(), adminInfo.getPass());
+        boolean authenticated = adminService.authenticate(adminInfo.getUsername(), adminInfo.getPassword());
         if (authenticated && adminInfo.getUserType().equals("admin")) {
             return "redirect:/adminDashboard";
         } else {
             return "redirect:/adminLoginPage?error";
         }
     }
-
+    
     @GetMapping("/adminDashboard")
     public String showDashboardPage() {
         return "adminDashboard";

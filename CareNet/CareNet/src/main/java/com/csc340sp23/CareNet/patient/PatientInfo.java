@@ -16,7 +16,7 @@ import lombok.Setter;
  */
 @AllArgsConstructor
 @Entity
-@Table(name = "Login In")
+@Table(name = "Patient Login In")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -25,13 +25,13 @@ public class PatientInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String user;
-    private String pass;
+    private String username;
+    private String password;
     private String userType;
 
-    public PatientInfo(String user, String pass, String userType) {
-        this.user = user;
-        this.pass = pass;
+    public PatientInfo(String username, String password, String userType) {
+        this.username = username;
+        this.password = password;
         this.userType = userType;
     }
 

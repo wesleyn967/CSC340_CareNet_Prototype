@@ -1,6 +1,5 @@
 package com.csc340sp23.CareNet.provider;
 
-import com.csc340sp23.CareNet.provider.*;
 import com.csc340sp23.CareNet.provider.ProviderInfo;
 import com.csc340sp23.CareNet.provider.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class ProviderController {
 
     @PostMapping("/providerLoginPage")
     public String processLoginForm(@ModelAttribute("providerInfo") ProviderInfo providerInfo) {
-        boolean authenticated = providerService.authenticate(providerInfo.getUser(), providerInfo.getPass());
+        boolean authenticated = providerService.authenticate(providerInfo.getUsername(), providerInfo.getPassword());
         if (authenticated && providerInfo.getUserType().equals("provider")) {
             return "redirect:/providerDashboard";
         } else {

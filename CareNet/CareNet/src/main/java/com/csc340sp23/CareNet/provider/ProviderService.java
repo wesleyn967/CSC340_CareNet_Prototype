@@ -1,6 +1,5 @@
 package com.csc340sp23.CareNet.provider;
 
-import com.csc340sp23.CareNet.provider.ProviderInfo;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Service;

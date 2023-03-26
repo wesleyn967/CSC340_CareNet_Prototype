@@ -23,8 +23,8 @@ public class PatientController {
 
     @PostMapping("/patientLoginPage")
     public String processLoginForm(@ModelAttribute("patientInfo") PatientInfo patientInfo) {
-        boolean authenticated = patientService.authenticate(patientInfo.getUser(), patientInfo.getPass());
-        if (authenticated && patientInfo.getUserType().equals("patient")) {
+        boolean authenticated = patientService.authenticate(patientInfo.getUsername(), patientInfo.getPassword());
+        if (authenticated && patientInfo.getUserType().equals("user")) {
             return "redirect:/patientDashboard";
         } else {
             return "redirect:/patientLoginPage?error";
