@@ -33,6 +33,7 @@ public class PatientController {
 
     @GetMapping("/patientDashboard")
     public String showDashboardPage() {
+        
         return "patientDashboard";
     }
 
