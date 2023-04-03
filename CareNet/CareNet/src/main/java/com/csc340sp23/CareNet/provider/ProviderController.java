@@ -61,10 +61,10 @@ public class ProviderController {
         return "providerAdminChat";
     }
     
-    @GetMapping("/providerRefillPrescription")
-    public String showRefillPrescription() {
+    @GetMapping("/providerPrescriptionRefill")
+    public String showProviderPrescriptionRefill() {
         
-        return "providerRefillPrescription";
+        return "providerPrescriptionRefill";
     }
     
     @GetMapping("/providerResults")
