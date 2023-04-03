@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload Results</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			margin-top: 0;
+			text-align: center;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 20px;
+		}
+		label {
+			margin-top: 10px;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		input[type="text"], textarea {
+			padding: 5px;
+			margin: 5px 0;
+			width: 100%;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+		textarea {
+			height: 100px;
+		}
+		button[type="submit"] {
+			background-color: #2196f3;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px;
+			margin-top: 20px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Upload Results</h1>
+	<form>
+		<label for="patient-name">Patient Name:</label>
+		<input type="text" id="patient-name" name="patient-name" required>
+		<label for="visit-date">Visit Date:</label>
+		<input type="date" id="visit-date" name="visit-date" required>
+		<label for="result-description">Result Description:</label>
+		<textarea id="result-description" name="result-description" required></textarea>
+		<label for="result-file">Upload Result File:</label>
+		<input type="file" id="result-file" name="result-file">
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>

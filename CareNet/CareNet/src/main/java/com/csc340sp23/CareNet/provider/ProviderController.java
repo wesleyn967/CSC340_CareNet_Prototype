@@ -33,7 +33,31 @@ public class ProviderController {
 
     @GetMapping("/providerDashboard")
     public String showDashboardPage() {
+        
         return "providerDashboard";
     }
+    
+    @GetMapping("/providerAppointment")
+    public String showAppointmentPage() {
+        
+        return "providerAppointment";
+    }
 
+    @GetMapping("/providerChat")
+    public String showProviderChat() {
+        
+        return "providerChat";
+    }
+    
+    @GetMapping("/providerRefillPrescription")
+    public String showRefillPrescription() {
+        
+        return "providerRefillPrescription";
+    }
+    
+    @GetMapping("/providerResults")
+    public String showProviderResults() {
+        
+        return "providerResults";
+    }
 }
