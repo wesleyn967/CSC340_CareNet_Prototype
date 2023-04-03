@@ -20,6 +20,12 @@ public class ProviderController {
         model.addAttribute("providerInfo", new ProviderInfo());
         return "providerLoginPage";
     }
+    
+   @GetMapping("/providerLoginPageRetry")
+    public String providerLoginRetry (Model model) {
+        model.addAttribute("providerInfo", new ProviderInfo());
+        return "providerLoginPageRetry";
+    } 
 
     @PostMapping("/providerLoginPage")
     public String processLoginForm(@ModelAttribute("providerInfo") ProviderInfo providerInfo) {
@@ -27,7 +33,7 @@ public class ProviderController {
         if (authenticated && providerInfo.getUserType().equals("provider")) {
             return "redirect:/providerDashboard";
         } else {
-            return "redirect:/providerLoginPage?error";
+            return "redirect:/providerLoginPageRetry";
         }
     }
 

@@ -37,6 +37,18 @@
 			color: #2196f3;
 			text-decoration: none;
 		}
+        .logout {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logout button {
+            background-color: #ddd;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 	</style>
 </head>
 <body>
@@ -44,8 +56,8 @@
 	<div class="container">
 		<div class="card">
 			<h2>Upload Results</h2>
-			<p>View and upload patient results</p>
-			<a href="providerResults">View Patients</a>
+			<p>Upload patient results</p>
+			<a href="providerResults">Upload Results</a>
 		</div>
 		<div class="card">
 			<h2>Appointments</h2>
@@ -54,14 +66,17 @@
 		</div>
 		<div class="card">
 			<h2>Refill Prescription</h2>
-			<p>Refill patient presriptions</p>
-			<a href="providerRefillPrescription">View Prescriptions</a>
+			<p>Refill patient prescriptions</p>
+			<a href="providerPrescriptionRefill">View Prescriptions</a>
 		</div>
 		<div class="card">
 			<h2>Chat with Patient/Admin</h2>
 			<p>Chat with Patients to update or inform patient; Chat with Admin about any questions</p>
 			<a href="providerChat">View Messages</a>
 		</div>
+        <div class="logout">
+            <button onclick="window.location.href='providerLoginPage'">Logout</button>
+        </div>
 	</div>
 </body>
 </html>

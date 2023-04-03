@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Provider Login Page</title>
+</head>
+<body>
+	<h1>Login</h1>
+	<form method="POST" action="/providerLoginPage">
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" required><br><br>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required><br><br>
+		<label for="userType">I am a:</label>
+		<select id="userType" name="userType">
+			<option value="user">User</option>
+			<option value="provider">Provider</option>
+			<option value="admin">Admin</option>
+		</select><br><br>
+		<input type="submit" value="Login">
+		<div style="color:red">
+			<c:if test="${param.error != null}">
+				Invalid username or password.
+			</c:if>
+		</div>
+	</form>
+</body>
+</html>

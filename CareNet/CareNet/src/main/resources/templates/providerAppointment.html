@@ -79,12 +79,13 @@
             </div>
           </td>
           <td>Flu-like symptoms</td>
-          <td><button>Select Time</button></td>
+          <td><button class="select-time-btn">Select Time</button></td>
         </tr>
       </tbody>
     </table>
     <script>
       const timeSlots = document.querySelectorAll('.time-slot');
+      const selectTimeBtns = document.querySelectorAll('.select-time-btn');
       timeSlots.forEach((slot) => {
         slot.addEventListener('click', () => {
           // Clear previously selected slots
@@ -93,8 +94,4 @@
           });
           // Select clicked slot
           slot.classList.add('selected');
-        });
-      });
-    </script>
-  </body>
-</html>
+          //
