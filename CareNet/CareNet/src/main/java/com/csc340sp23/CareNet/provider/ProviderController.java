@@ -49,6 +49,12 @@ public class ProviderController {
         return "providerChat";
     }
     
+    @GetMapping("/providerPatientChat")
+    public String showProviderPatientChat() {
+        
+        return "providerPatientChat";
+    }
+    
     @GetMapping("/providerRefillPrescription")
     public String showRefillPrescription() {
         

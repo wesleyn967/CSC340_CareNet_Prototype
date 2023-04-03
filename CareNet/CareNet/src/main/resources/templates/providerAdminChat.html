@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Provider-Patient Chatroom</title>
+    <title>Provider-Admin Chatroom</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -35,7 +35,7 @@
     </style>
   </head>
   <body>
-    <h1>Provider-Patient Chatroom</h1>
+    <h1>Provider-Admin Chatroom</h1>
     <div id="messages"></div>
     <form id="message-form">
       <input type="text" id="message-input" placeholder="Type your message here...">
@@ -51,7 +51,7 @@
         const message = messageInput.value.trim();
         if (message !== '') {
           // Append message to messages div
-          messagesDiv.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+          messagesDiv.innerHTML += `<p><strong>Provider:</strong> ${message}</p>`;
           // Clear message input
           messageInput.value = '';
           // Scroll to bottom of messages div
