@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProviderService {
 
+    
     // This map simulates a database of provider credentials
     private static final Map<String, String> PROVIDER_CREDENTIALS = new HashMap<>();
 
