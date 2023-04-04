@@ -23,7 +23,6 @@
 
        @GetMapping("/providerLoginPageRetry")
         public String providerLoginRetry (Model model) {
-            model.addAttribute("providerInfo", new ProviderInfo());
             return "providerLoginPageRetry";
         } 
 
