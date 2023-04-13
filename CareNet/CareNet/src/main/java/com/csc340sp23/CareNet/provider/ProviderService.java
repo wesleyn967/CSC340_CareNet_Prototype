@@ -20,4 +20,8 @@ public class ProviderService {
         return expectedPassword != null && expectedPassword.equals(password);
     }
 
+    void processResults(ResultData resultData) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
