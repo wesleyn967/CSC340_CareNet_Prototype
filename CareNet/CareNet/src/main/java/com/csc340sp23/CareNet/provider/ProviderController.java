@@ -96,5 +96,11 @@ public class ProviderController {
         // Redirect to a success page or return an appropriate response
         return "redirect:/successPage";
     }
+    
+    @GetMapping("/successPage")
+    public String successResultsPage() {
+
+        return "successPage";
+    }
 
 }
