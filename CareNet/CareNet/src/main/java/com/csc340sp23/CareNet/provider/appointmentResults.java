@@ -10,9 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class appointmentResults {
-    private static final String URL = "jdbc:mysql://localhost:3306/appointment_results";
-    private static final String USERNAME = "provider";
-    private static final String PASSWORD = "provider";
+    private static final String URL = "jdbc:mysql://localhost:3306/appointment_results?zeroDateTimeBehavior=CONVERT_TO_NULL";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "pass";
 
     public static void main(String[] args) {
         try {
@@ -35,10 +35,10 @@ public class appointmentResults {
         }
     }
 
-    public static void insertAppointment(String name, String date, String description, byte[] upload, Connection connection) throws SQLException {
-        String sql = "INSERT INTO appointment_results (Name, Date, Description, Upload) VALUES (?, ?, ?, ?)";
+    public static void insertAppointment(String patientName, String date, String description, byte[] upload, Connection connection) throws SQLException {
+        String sql = "INSERT INTO appointment_results (patientName, Date, Description, Upload) VALUES (?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, name);
+        statement.setString(1, patientName);
         statement.setString(2, date);
         statement.setString(3, description);
         statement.setBytes(4, upload);
@@ -51,11 +51,11 @@ public class appointmentResults {
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
-            String name = resultSet.getString("Name");
+            String name = resultSet.getString("patientName");
             String date = resultSet.getString("Date");
             String description = resultSet.getString("Description");
             byte[] upload = resultSet.getBytes("Upload");
-            System.out.println("Name: " + name + ", Date: " + date + ", Description: " + description + ", Upload: " + new String(upload));
+            System.out.println("patientName: " + name + ", Date: " + date + ", Description: " + description + ", Upload: " + new String(upload));
         }
         resultSet.close();
         statement.close();
