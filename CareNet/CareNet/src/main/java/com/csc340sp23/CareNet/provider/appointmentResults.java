@@ -20,10 +20,6 @@ public class appointmentResults {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             System.out.println("Connected to the database.");
 
-            // Perform database operations
-            // Insert data
-            insertAppointment("John Doe", "2023-04-16 14:30:00", "Sample description", new byte[]{1, 2, 3}, connection);
-
             // Retrieve data
             retrieveAppointments(connection);
 
