@@ -8,9 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.persistence.Transient;
 import java.util.Date;
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "appointment_results") // Replace with your actual table name
@@ -25,11 +23,6 @@ public class ResultData {
     private Date date;
 
     private String description;
-
-    // Constructors
-    public ResultData() {
-        // Default constructor
-    }
 
     public ResultData(String patientName, Date date, String description) {
         this.patientName = patientName;
