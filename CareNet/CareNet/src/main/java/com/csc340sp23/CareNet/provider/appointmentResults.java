@@ -12,9 +12,10 @@ public class appointmentResults {
     private static final String PASSWORD = "pass";
 
     public static void main(String[] args) {
+        Connection connection = null;
         try {
             // Establish database connection
-            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             System.out.println("Connected to the database.");
 
             // Insert a sample appointment
@@ -27,6 +28,17 @@ public class appointmentResults {
             connection.close();
             System.out.println("Disconnected from the database.");
         } catch (SQLException e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error closing database connection: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
     }
 
@@ -40,6 +52,7 @@ public class appointmentResults {
         statement.executeUpdate();
         System.out.println("Appointment inserted successfully.");
         statement.close();
+        connection.commit(); // Commit the transaction
     }
 
     public static void retrieveAppointments(Connection connection) throws SQLException {
