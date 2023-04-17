@@ -18,9 +18,6 @@ public class appointmentResults {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             System.out.println("Connected to the database.");
 
-            // Insert a sample appointment
-            insertAppointment("John Doe", "2023-04-16", "Sample description", "Sample upload".getBytes(), connection);
-
             // Retrieve data
             retrieveAppointments(connection);
 
@@ -42,13 +39,12 @@ public class appointmentResults {
         }
     }
 
-    public static void insertAppointment(String patientName, String date, String description, byte[] upload, Connection connection) throws SQLException {
+    public static void insertAppointment(String patientName, String date, String description, Connection connection) throws SQLException {
         String sql = "INSERT INTO `appointment_results` (patientName, Date, Description, Upload) VALUES (?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, patientName);
         statement.setString(2, date);
         statement.setString(3, description);
-        statement.setBytes(4, upload);
         statement.executeUpdate();
         System.out.println("Appointment inserted successfully.");
         statement.close();
@@ -63,8 +59,7 @@ public class appointmentResults {
             String name = resultSet.getString("patientName");
             String date = resultSet.getString("Date");
             String description = resultSet.getString("Description");
-            byte[] upload = resultSet.getBytes("Upload");
-            System.out.println("patientName: " + name + ", Date: " + date + ", Description: " + description + ", Upload: " + new String(upload));
+            System.out.println("patientName: " + name + ", Date: " + date + ", Description: " + description);
         }
         resultSet.close();
         statement.close();

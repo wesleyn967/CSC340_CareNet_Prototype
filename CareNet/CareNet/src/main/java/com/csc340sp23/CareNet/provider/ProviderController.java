@@ -83,15 +83,12 @@ public class ProviderController {
     @PostMapping("/providerResults")
     public String processProviderResultsForm(@ModelAttribute("resultInfo") ResultInfo resultInfo) {
         // Extract the data from the AppointmentInfo object
-        Long id = resultInfo.getId();
         String patientName = resultInfo.getPatientName();
         Date date = resultInfo.getDate();
         String description = resultInfo.getDescription();
-        MultipartFile upload = resultInfo.getUpload();
 
-        // Perform necessary processing on the uploaded file, e.g., save to disk or store in database
         // Create a ResultData object with the extracted data
-        ResultData resultData = new ResultData(id, patientName, date, description, upload);
+        ResultData resultData = new ResultData(patientName, date, description);
 
         // Call the providerService to process and store the ResultData object in the database
         providerService.processProviderResultsForm(resultData);
