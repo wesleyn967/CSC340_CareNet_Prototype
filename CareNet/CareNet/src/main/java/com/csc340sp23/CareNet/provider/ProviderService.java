@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,14 +47,13 @@ public class ProviderService {
             // ...
         } catch (IOException e) {
             // Handle exception appropriately
-            e.printStackTrace();
         }
 
         // Store the extracted data in a database or perform any other necessary processing
         // Example code to store data in a database
         try {
             // Establish database connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "pass");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results", "root", "pass");
 
             // Create and execute SQL query to insert data into results table
             String query = "INSERT INTO results (patientName, date, description, file_path) VALUES (?, ?, ?, ?)";
@@ -72,7 +69,6 @@ public class ProviderService {
             conn.close();
         } catch (SQLException e) {
             // Handle exception appropriately
-            e.printStackTrace();
         }
     }
 

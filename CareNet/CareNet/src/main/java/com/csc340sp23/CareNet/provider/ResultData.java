@@ -1,13 +1,34 @@
 package com.csc340sp23.CareNet.provider;
 
-import com.csc340sp23.CareNet.provider.ResultInfo;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
+@Entity
+@Table(name = "appointment_results") // Replace with your actual table name
 public class ResultData {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Example primary key field, use appropriate data type
+
+    @Column(name = "patient_name")
     private String patientName;
+
+    @Temporal(TemporalType.DATE)
     private Date date;
+
     private String description;
+
+    @Transient // Ignore this field when persisting to the database
     private MultipartFile upload;
 
     // Constructors
@@ -15,7 +36,8 @@ public class ResultData {
         // Default constructor
     }
 
-    public ResultData(String patientName, Date date, String description, MultipartFile upload) {
+    public ResultData(Long id, String patientName, Date date, String description, MultipartFile upload) {
+        this.id = id;
         this.patientName = patientName;
         this.date = date;
         this.description = description;
@@ -23,6 +45,14 @@ public class ResultData {
     }
 
     // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getPatientName() {
         return patientName;
     }
@@ -47,16 +77,16 @@ public class ResultData {
         this.description = description;
     }
     
-   public MultipartFile getUpload(){
-       return upload;
-   }
-   
-   public void setUpload(MultipartFile upload){
-       this.upload = upload;
-   }
+    public MultipartFile getUpload(){
+        return upload;
+    }
+
+    public void setUpload(MultipartFile upload){
+        this.upload = upload;
+    }
 
     // Additional methods to convert data from ResultInfo object
     public static ResultData fromResultInfo(ResultInfo resultInfo) {
-        return new ResultData(resultInfo.getPatientName(), resultInfo.getDate(), resultInfo.getDescription(), resultInfo.getUpload());
+        return new ResultData(resultInfo.getId(), resultInfo.getPatientName(), resultInfo.getDate(), resultInfo.getDescription(), resultInfo.getUpload());
     }
 }

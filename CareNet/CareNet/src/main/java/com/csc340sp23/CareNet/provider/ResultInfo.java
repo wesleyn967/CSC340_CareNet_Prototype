@@ -1,9 +1,11 @@
 package com.csc340sp23.CareNet.provider;
+
 import java.util.Date;
 import org.springframework.web.multipart.MultipartFile; // Import MultipartFile from Spring
 
 public class ResultInfo {
 
+    private Long id; // Added id field
     private String patientName;
     private Date date;
     private String description;
@@ -13,7 +15,8 @@ public class ResultInfo {
     public ResultInfo() {
     }
 
-    public ResultInfo(String patientName, Date date, String description, MultipartFile upload) {
+    public ResultInfo(Long id, String patientName, Date date, String description, MultipartFile upload) {
+        this.id = id;
         this.patientName = patientName;
         this.date = date;
         this.description = description;
@@ -21,6 +24,14 @@ public class ResultInfo {
     }
 
     // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getPatientName() {
         return patientName;
     }
