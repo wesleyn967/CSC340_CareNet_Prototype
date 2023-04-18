@@ -29,8 +29,7 @@ public class ProviderInfo {
     private String password;
     private String userType;
 
-    public ProviderInfo(Long id, String username, String password, String userType) {
-        this.id = id;
+    public ProviderInfo(String username, String password, String userType) {
         this.username = username;
         this.password = password;
         this.userType = userType;

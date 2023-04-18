@@ -16,7 +16,7 @@ public class ResultData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "patient_name")
+    @Column(name = "patientName")
     private String patientName;
 
     @Temporal(TemporalType.DATE)
