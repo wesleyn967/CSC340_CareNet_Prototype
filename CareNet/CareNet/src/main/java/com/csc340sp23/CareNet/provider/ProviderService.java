@@ -34,10 +34,10 @@ public class ProviderService {
         // Example code to store data in a database
         try {
             // Establish database connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results", "root", "pass");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "");
 
             // Create and execute SQL query to insert data into results table
-            String query = "INSERT INTO results (patientName, date, description) VALUES (?, ?, ?)";
+            String query = "INSERT INTO appointment_results (patientName, date, description) VALUES (?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, patientName);
             statement.setDate(2, new java.sql.Date(date.getTime()));
@@ -52,8 +52,32 @@ public class ProviderService {
         }
     }
 
-    void processProviderResultsForm(ResultData appointmentData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void processProviderResultsForm(ResultData resultData) {
+        // Extract the data from the ResultData object
+        String patientName = resultData.getPatientName();
+        Date date = resultData.getDate();
+        String description = resultData.getDescription();
+
+        // Store the extracted data in a database or perform any other necessary processing
+        // Example code to store data in a database
+        try {
+            // Establish database connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "");
+
+            // Create and execute SQL query to insert data into results table
+            String query = "INSERT INTO appointmentResults (patientName, date, description) VALUES (?, ?, ?)";
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, patientName);
+            statement.setDate(2, new java.sql.Date(date.getTime()));
+            statement.setString(3, description);
+            statement.executeUpdate();
+
+            // Close database resources
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            // Handle exception appropriately
+        }
     }
 
 }

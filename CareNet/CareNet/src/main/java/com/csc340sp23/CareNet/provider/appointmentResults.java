@@ -6,10 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class appointmentResults {
-    private static final String URL = "jdbc:mysql://localhost:3306/appointment_results";
+public class AppointmentResults {
+    private static final String URL = "jdbc:mysql://localhost:3306/appointment_results?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "pass";
+    private static final String PASSWORD = "";
 
     public static void main(String[] args) {
         Connection connection = null;
@@ -40,7 +40,7 @@ public class appointmentResults {
     }
 
     public static void insertAppointment(String patientName, String date, String description, Connection connection) throws SQLException {
-        String sql = "INSERT INTO `appointment_results` (patientName, Date, Description, Upload) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO appointment_results (patientName, Date, Description, Upload) VALUES (?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, patientName);
         statement.setString(2, date);
