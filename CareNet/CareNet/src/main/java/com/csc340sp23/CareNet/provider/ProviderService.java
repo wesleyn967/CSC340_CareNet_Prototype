@@ -1,13 +1,15 @@
 package com.csc340sp23.CareNet.provider;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class ProviderService {

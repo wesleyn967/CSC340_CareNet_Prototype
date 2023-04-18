@@ -5,42 +5,39 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class AppointmentResults {
-    private static final String URL = "jdbc:mysql://localhost:3306/appointment_results?zeroDateTimeBehavior=CONVERT_TO_NULL";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    public void processResults(ResultData resultData) {
+        // Extract the data from the ResultData object
+        String patientName = resultData.getPatientName();
+        Date date = resultData.getDate();
+        String description = resultData.getDescription();
 
-    public static void main(String[] args) {
-        Connection connection = null;
+        // Store the extracted data in a database or perform any other necessary processing
+        // Example code to store data in a database
         try {
             // Establish database connection
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("Connected to the database.");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "");
 
-            // Retrieve data
-            retrieveAppointments(connection);
+            // Create and execute SQL query to insert data into results table
+            String query = "INSERT INTO appointment_results (patientName, date, description) VALUES (?, ?, ?)";
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, patientName);
+            statement.setDate(2, new java.sql.Date(date.getTime()));
+            statement.setString(3, description);
+            statement.executeUpdate();
 
-            // Close the database connection
-            connection.close();
-            System.out.println("Disconnected from the database.");
+            // Close database resources
+            statement.close();
+            conn.close();
         } catch (SQLException e) {
-            System.err.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            try {
-                if (connection != null && !connection.isClosed()) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Error closing database connection: " + e.getMessage());
-                e.printStackTrace();
-            }
+            // Handle exception appropriately
         }
     }
 
     public static void insertAppointment(String patientName, String date, String description, Connection connection) throws SQLException {
-        String sql = "INSERT INTO appointment_results (patientName, Date, Description, Upload) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO appointment_results (patientName, Date, Description) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, patientName);
         statement.setString(2, date);
