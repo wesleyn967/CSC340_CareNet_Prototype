@@ -16,7 +16,7 @@ import lombok.Setter;
  */
 @AllArgsConstructor
 @Entity
-@Table(name = "Patient Login In")
+@Table(name = "Patient")
 @NoArgsConstructor
 @Getter
 @Setter

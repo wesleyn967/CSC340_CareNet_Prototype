@@ -1,72 +1,88 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Healthcare System Dashboard</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-		}
-		h1 {
-			margin-top: 0;
-			text-align: center;
-		}
-		.container {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			align-items: center;
-			padding: 20px;
-		}
-		.card {
-			width: 30%;
-			background-color: #f5f5f5;
-			border: 1px solid #ddd;
-			border-radius: 5px;
-			padding: 20px;
-			margin-bottom: 20px;
-			box-shadow: 0px 0px 5px #ccc;
-		}
-		.card h2 {
-			margin-top: 0;
-		}
-		.card p {
-			margin-bottom: 10px;
-		}
-		.card a {
-			color: #2196f3;
-			text-decoration: none;
-		}
-	</style>
-</head>
-<body>
-	<h1>Welcome to the Patient Healthcare System Dashboard</h1>
-	<div class="container">
-		<div class="card">
-			<h2>View Results</h2>
-			<p>View the results of previous visits</p>
-			<a href="#">View results</a>
-		</div>
-		<div class="card">
-			<h2>Billing Information</h2>
-			<p>View and make payments</p>
-			<a href="#">View billings</a>
-		</div>
-		<div class="card">
-			<h2>Appointments</h2>
-			<p>Schedule and manage appointments</p>
-			<a href="#">View Appointments</a>
-		</div>
-		<div class="card">
-			<h2>Prescription Refills</h2>
-			<p>View and refill prescriptions</p>
-			<a href="#">View Prescriptions</a>
-	</div>
-	<div class="card">
-			<h2>Chat with Admin/Provider</h2>
-			<p>Chat with Provider for medical related questions; Chat with Admin about issues with Provider </p>
-			<a href="#">View Messages</a>
-	</div>
-	</form>
-</body>
+    <head>
+        <title>Healthcare System Dashboard</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            h1 {
+                margin-top: 0;
+                text-align: center;
+            }
+            .container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+            }
+            .card {
+                width: 30%;
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0px 0px 5px #ccc;
+            }
+            .card h2 {
+                margin-top: 0;
+            }
+            .card p {
+                margin-bottom: 10px;
+            }
+            .card a {
+                color: #2196f3;
+                text-decoration: none;
+            }
+            .logout {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .logout button {
+                background-color: #ddd;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="logout">
+            <button onclick="window.location.href='providerLoginPage'">Logout</button>
+        </div>
+        <h1>Welcome to the Patient Healthcare System Dashboard</h1>
+        <div class="container">
+            <div class="card">
+                <h2>View Results</h2>
+                <p>View the results of previous visits</p>
+                <a href="/patientResults">View results</a>
+            </div>
+            <div class="card">
+                <h2>Billing Information</h2>
+                <p>View and make payments</p>
+                <a href="/patientBill">View billings</a>
+            </div>
+            <div class="card">
+                <h2>Appointments</h2>
+                <p>Schedule and manage appointments</p>
+                <a href="/patientAppointment">View Appointments</a>
+            </div>
+            <div class="card">
+                <h2>Prescription Refills</h2>
+                <p>View and refill prescriptions</p>
+                <a href="/patientPrescription">View Prescriptions</a>
+            </div>
+            <div class="card">
+                <h2>Chat with Admin/Provider</h2>
+                <p>Chat with Provider for medical related questions; Chat with Admin about issues with Provider </p>
+                <a href="/patientChat">View Messages</a>
+            </div>
+        </div>
+
+    </body>
 </html>

@@ -29,16 +29,51 @@ public class ProviderService {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void sendDataToDatabase(String username, String password, String data) {
+    /*public void sendDataToDatabase(String username, String password, String data) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
             // Create a connection to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_name", username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results", username, password);
 
             // Prepare a statement to insert data into a table
-            statement = connection.prepareStatement("INSERT INTO table_name (data) VALUES (?)");
+            statement = connection.prepareStatement("INSERT INTO appointment_results (data) VALUES (?)");
             statement.setString(1, data);
+
+            // Execute the statement
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the statement and connection
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
+
+    public void results(ResultData resultData) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        String user = "root";
+        String password = "";
+        try {
+            // Create a connection to the database
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results", user, password);
+
+            // Prepare a statement to insert data into a table
+            statement = connection.prepareStatement("INSERT INTO appointment_results (patientName, Date, Description) VALUES (?, ?, ?)");
+            statement.setString(1, resultData.getPatientName());
+            statement.setDate(2, new java.sql.Date(resultData.getDate().getTime()));
+            statement.setString(3, resultData.getDescription());
 
             // Execute the statement
             statement.executeUpdate();
@@ -60,14 +95,14 @@ public class ProviderService {
         }
     }
 
-    public String retrieveDataFromDatabase(String username, String password) {
+    public String retrieveDataFromDatabase(ResultData resultData) {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
         String result = null;
         try {
             // Create a connection to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_name", username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results");
 
             // Create a statement to retrieve data from a table
             statement = connection.createStatement();
