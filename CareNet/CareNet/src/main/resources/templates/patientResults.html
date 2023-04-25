@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			margin-top: 0;
+			text-align: center;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 20px;
+		}
+		label {
+			margin-top: 10px;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		input[type="text"], textarea {
+			padding: 5px;
+			margin: 5px 0;
+			width: 100%;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+		textarea {
+			height: 100px;
+		}
+		button[type="submit"] {
+			background-color: #2196f3;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px;
+			margin-top: 20px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Patient Results</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Visit Date</th>
+                    <th>Result Description</th>
+                </tr>
+                <tr><th>Patient</th><th>4/4/2023</th><th>Positive Test</th></tr>
+            </thead>
+        </table>
+    
+	<button onclick="location.href='providerDashboard'">Back to Patient Dashboard</button>
+</body>
+</html>

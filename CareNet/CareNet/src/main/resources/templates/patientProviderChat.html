@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Patient-Provider Chatroom</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        margin-top: 0;
+        text-align: center;
+      }
+      #messages {
+        height: 400px;
+        overflow-y: scroll;
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      #message-input {
+        width: 80%;
+        margin: 8px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      #send-button {
+        margin: 8px;
+        padding: 8px;
+        background-color: #2196f3;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Patient-Provider Chatroom</h1>
+    <div id="messages"></div>
+    <form id="message-form">
+      <input type="text" id="message-input" placeholder="Type your message here...">
+      <button type="submit" id="send-button">Send</button>
+    </form>
+    <script>
+      const messageForm = document.querySelector('#message-form');
+      const messageInput = document.querySelector('#message-input');
+      const messagesDiv = document.querySelector('#messages');
+
+      messageForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const message = messageInput.value.trim();
+        if (message !== '') {
+          // Append message to messages div
+          messagesDiv.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+          // Clear message input
+          messageInput.value = '';
+          // Scroll to bottom of messages div
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+      });
+    </script>
+	<button onclick="location.href='patientChat'">Back to Patient Chat Menu</button>
+  </body>
+</html>

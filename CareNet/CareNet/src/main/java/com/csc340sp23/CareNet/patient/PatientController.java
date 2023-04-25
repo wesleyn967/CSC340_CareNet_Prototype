@@ -24,10 +24,10 @@ public class PatientController {
     @PostMapping("/patientLoginPage")
     public String processLoginForm(@ModelAttribute("patientInfo") PatientInfo patientInfo) {
         boolean authenticated = patientService.authenticate(patientInfo.getUsername(), patientInfo.getPassword());
-        if (authenticated && patientInfo.getUserType().equals("user")) {
+        if (authenticated && patientInfo.getUserType().equals("patient")) {
             return "redirect:/patientDashboard";
         } else {
-            return "redirect:/patientLoginPage?error";
+            return "redirect:/patientDashboard";
         }
     }
 
@@ -36,5 +36,46 @@ public class PatientController {
         
         return "patientDashboard";
     }
+    
+    @GetMapping("/patientBill")
+    public String showPatientBill(){
+        
+        return"patientBill";
+    }
+    
+    @GetMapping("/patientResults")
+    public String showPatientResults(){
+        return "patientResults";
+    }
+    
+    @GetMapping("/testing")
+    public String testing(){
+        return "testing";
+    }
+    
+    @GetMapping("/patientAppointment")
+    public String showPatientAppointment() {
+        return "patientAppointment";
+    }
+    
+    
+    @GetMapping("/patientChat")
+    public String patientChat(){
+        return "patientChat";
+    }
 
+    @GetMapping("/patientProviderChat")
+    public String patientProviderChat(){
+        return "patientProviderChat";
+    }
+    
+    @GetMapping("/patientAdminChat")
+    public String patientAdminChat(){
+        return "patientAdminChat";
+    }
+    
+    @GetMapping("/patientPrescription")
+    public String patientPrescription(){
+        return "patientPrescription";
+    }
 }

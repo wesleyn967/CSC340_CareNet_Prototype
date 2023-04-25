@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Healthcare System - Chat Menu</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			margin-top: 0;
+			text-align: center;
+		}
+		.container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px;
+		}
+		.card {
+			width: 30%;
+			background-color: #f5f5f5;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			padding: 20px;
+			margin-bottom: 20px;
+			box-shadow: 0px 0px 5px #ccc;
+		}
+		.card h2 {
+			margin-top: 0;
+		}
+		.card p {
+			margin-bottom: 10px;
+		}
+		.card a {
+			color: #2196f3;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Welcome to the Patient Healthcare System Chat Menu</h1>
+	<div class="container">
+		<div class="card">
+			<h2>Chat with Provider</h2>
+			<p>Click here to chat with a provider</p>
+			<a href="patientProviderChat">Start Chat with Provider</a>
+		</div>
+		<div class="card">
+			<h2>Chat with Administrator</h2>
+			<p>Click here to chat with an administrator</p>
+			<a href="patientAdminChat">Start Chat with Administrator</a>
+		</div>
+	</div>
+	<button onclick="location.href='providerDashboard'">Back to Patient Dashboard</button>
+</body>
+</html>

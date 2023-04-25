@@ -34,5 +34,6 @@ public class PatientInfo {
         this.password = password;
         this.userType = userType;
     }
+   
 
 }
