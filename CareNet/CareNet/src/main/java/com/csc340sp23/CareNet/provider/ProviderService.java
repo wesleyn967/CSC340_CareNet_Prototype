@@ -1,14 +1,15 @@
 package com.csc340sp23.CareNet.provider;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
+
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class ProviderService {
@@ -25,81 +26,60 @@ public class ProviderService {
         return expectedPassword != null && expectedPassword.equals(password);
     }
 
-    void processResults(ResultData resultData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public void processResults(ResultData resultData) {
+        // Extract the data from the ResultData object
+        String patientName = resultData.getPatientName();
+        Date date = resultData.getDate();
+        String description = resultData.getDescription();
 
-    public void sendDataToDatabase(String username, String password, String data) {
-        Connection connection = null;
-        PreparedStatement statement = null;
+        // Store the extracted data in a database or perform any other necessary processing
+        // Example code to store data in a database
         try {
-            // Create a connection to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_name", username, password);
+            // Establish database connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "");
 
-            // Prepare a statement to insert data into a table
-            statement = connection.prepareStatement("INSERT INTO table_name (data) VALUES (?)");
-            statement.setString(1, data);
-
-            // Execute the statement
+            // Create and execute SQL query to insert data into results table
+            String query = "INSERT INTO appointment_results (patientName, date, description) VALUES (?, ?, ?)";
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, patientName);
+            statement.setDate(2, new java.sql.Date(date.getTime()));
+            statement.setString(3, description);
             statement.executeUpdate();
 
+            // Close database resources
+            statement.close();
+            conn.close();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close the statement and connection
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            // Handle exception appropriately
         }
     }
 
-    public String retrieveDataFromDatabase(String username, String password) {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        String result = null;
+    public void processProviderResultsForm(ResultData resultData) {
+        // Extract the data from the ResultData object
+        String patientName = resultData.getPatientName();
+        Date date = resultData.getDate();
+        String description = resultData.getDescription();
+
+        // Store the extracted data in a database or perform any other necessary processing
+        // Example code to store data in a database
         try {
-            // Create a connection to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_name", username, password);
+            // Establish database connection
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/appointment_results?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "");
 
-            // Create a statement to retrieve data from a table
-            statement = connection.createStatement();
-            String query = "SELECT * FROM table_name";
+            // Create and execute SQL query to insert data into results table
+            String query = "INSERT INTO appointmentResults (patientName, date, description) VALUES (?, ?, ?)";
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, patientName);
+            statement.setDate(2, new java.sql.Date(date.getTime()));
+            statement.setString(3, description);
+            statement.executeUpdate();
 
-            // Execute the query and retrieve the results
-            resultSet = statement.executeQuery(query);
-
-            // Extract the data from the result set
-            while (resultSet.next()) {
-                result = resultSet.getString("data");
-            }
-
+            // Close database resources
+            statement.close();
+            conn.close();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close the result set, statement, and connection
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            // Handle exception appropriately
         }
-        return result;
     }
 
 }

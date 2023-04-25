@@ -1,6 +1,5 @@
 package com.csc340sp23.CareNet.provider;
 
-import com.csc340sp23.CareNet.patient.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +24,7 @@ public class ProviderInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String username;
     private String password;
     private String userType;

@@ -1,8 +1,8 @@
 package com.csc340sp23.CareNet.provider;
+
 import java.util.Date;
-
 public class ResultInfo {
-
+    
     private String patientName;
     private Date date;
     private String description;
@@ -11,13 +11,14 @@ public class ResultInfo {
     public ResultInfo() {
     }
 
-    public ResultInfo(String patientName, Date date, String description) {
+    public ResultInfo( String patientName, Date date, String description) {
         this.patientName = patientName;
         this.date = date;
         this.description = description;
     }
 
     // Getters and Setters
+
     public String getPatientName() {
         return patientName;
     }

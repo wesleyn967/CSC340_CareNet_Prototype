@@ -1,17 +1,28 @@
 package com.csc340sp23.CareNet.provider;
 
-import com.csc340sp23.CareNet.provider.ResultInfo;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import java.util.Date;
 
+@Entity
+@Table(name = "appointment_results") // Replace with your actual table name
 public class ResultData {
-    private String patientName;
-    private Date date;
-    private String description;
 
-    // Constructors
-    public ResultData() {
-        // Default constructor
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "patientName")
+    private String patientName;
+
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+    private String description;
 
     public ResultData(String patientName, Date date, String description) {
         this.patientName = patientName;
@@ -20,6 +31,7 @@ public class ResultData {
     }
 
     // Getters and Setters
+
     public String getPatientName() {
         return patientName;
     }
@@ -42,10 +54,5 @@ public class ResultData {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    // Additional methods to convert data from ResultInfo object
-    public static ResultData fromResultInfo(ResultInfo resultInfo) {
-        return new ResultData(resultInfo.getPatientName(), resultInfo.getDate(), resultInfo.getDescription());
     }
 }

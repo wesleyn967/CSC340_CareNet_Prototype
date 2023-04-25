@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Controller
@@ -82,7 +81,7 @@ public class ProviderController {
 
     @PostMapping("/providerResults")
     public String processProviderResultsForm(@ModelAttribute("resultInfo") ResultInfo resultInfo) {
-        // Extract the data from the ResultInfo object
+        // Extract the data from the AppointmentInfo object
         String patientName = resultInfo.getPatientName();
         Date date = resultInfo.getDate();
         String description = resultInfo.getDescription();
@@ -90,13 +89,13 @@ public class ProviderController {
         // Create a ResultData object with the extracted data
         ResultData resultData = new ResultData(patientName, date, description);
 
-        // Call the ProviderService to process and store the ResultData object in the database
-        providerService.processResults(resultData);
+        // Call the providerService to process and store the ResultData object in the database
+        providerService.processProviderResultsForm(resultData);
 
         // Redirect to a success page or return an appropriate response
         return "redirect:/successPage";
     }
-    
+
     @GetMapping("/successPage")
     public String successResultsPage() {
 
