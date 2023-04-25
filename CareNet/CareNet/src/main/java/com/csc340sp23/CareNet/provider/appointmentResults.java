@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class AppointmentResults {
+public class appointmentResults {
     public void processResults(ResultData resultData) {
         // Extract the data from the ResultData object
         String patientName = resultData.getPatientName();
